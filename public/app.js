@@ -5,11 +5,14 @@ function addCat(){
   var lastCat = cats[cats.length-1];
 
   var unorderedList = document.createElement("ul");
-  var element = document.createElement("li");
-  var element1 = document.createElement("li");
+  var listElements = [];
+  listElements[0] = document.createElement("li");
+  listElements[1] = document.createElement("li");
+  listElements[2] = document.createElement("li");
 
-  unorderedList.appendChild(element);
-  unorderedList.appendChild(element1);
+  for(var element of listElements){
+    unorderedList.appendChild(element);
+  }
 
   var catSection = document.getElementById('cats');
   catSection.appendChild(unorderedList);
