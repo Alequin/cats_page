@@ -12,11 +12,7 @@ function buildListCat(name, food, imageLink){
 
   listElements[0].innerHTML = "Name: " + name;
   listElements[1].innerHTML = "Favourite Food: " + food;
-
-  var catImage = document.createElement("img");
-  catImage.setAttribute("src", imageLink);
-  catImage.setAttribute("width", "500");
-  listElements[2].appendChild(catImage);
+  listElements[2].appendChild(makeCatImage(imageLink));
 
   for(var element of listElements){
     unorderedList.appendChild(element);
@@ -31,6 +27,13 @@ function makeListElements(count){
     listElements[j] = document.createElement("li");
   }
   return listElements;
+}
+
+function makeCatImage(imageLink){
+  var catImage = document.createElement("img");
+  catImage.setAttribute("src", imageLink);
+  catImage.setAttribute("width", "500");
+  return catImage;
 }
 
 function app(){
