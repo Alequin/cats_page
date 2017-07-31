@@ -1,18 +1,29 @@
 
+function Cat(name, favFood, imageLink){
+  this.name = name;
+  this.favFood = favFood;
+  this.imageLink = imageLink;
+}
+
+var cats = [];
+cats[0] = new Cat("Billy", "ice cream", "https://www.petfinder.com/wp-content/uploads/2012/11/99233806-bringing-home-new-cat-632x475.jpg");
+cats[1] = new Cat("Billy", "ice cream", "https://www.petfinder.com/wp-content/uploads/2012/11/99233806-bringing-home-new-cat-632x475.jpg");
+
 function addCat(catUnorderedList){
   var catSection = document.getElementById('cats');
   catSection.appendChild(catUnorderedList);
 }
 
-function buildListCat(name, food, imageLink){
+function buildListCat(cat){
 
   var unorderedList = document.createElement("ul");
 
   var listElements = makeListElements(3);
+  unorderedList.setAttribute("class", "cat")
 
-  listElements[0].innerHTML = "Name: " + name;
-  listElements[1].innerHTML = "Favourite Food: " + food;
-  listElements[2].appendChild(makeCatImage(imageLink));
+  listElements[0].innerHTML = "Name: " + cat.name;
+  listElements[1].innerHTML = "Favourite Food: " + cat.food;
+  listElements[2].appendChild(makeCatImage(cat.imageLink));
 
   for(var element of listElements){
     unorderedList.appendChild(element);
@@ -37,11 +48,10 @@ function makeCatImage(imageLink){
 }
 
 function app(){
-  var cat1 = buildListCat("Billy", "ice cream", "https://www.petfinder.com/wp-content/uploads/2012/11/99233806-bringing-home-new-cat-632x475.jpg");
-  addCat(cat1);
-
-  var cat2 = buildListCat("Sally", "chicken", "https://d2wq73xazpk036.cloudfront.net/media/27FB7F0C-9885-42A6-9E0C19C35242B5AC/41BAEDA0-30F8-43E5-A7C9998A9723A22C/thul-d2d9649f-d0ec-5211-a03d-735356e5c1b9.jpg?response-content-disposition=inline")
-  addCat(cat2);
+  for(var cat of cats){
+    var builtCat = buildListCat(cat);
+    addCat(builtCat);
+  }
 }
 
 window.onload = app;
